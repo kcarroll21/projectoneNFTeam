@@ -1,11 +1,23 @@
+
 var urlHeader = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=";
 var searchString = "The Camel, Richmond VA";
 var keyString = "&key=AIzaSyBrmvs545b9-qoXsiaF3flsvdqWxaSgmFc";
 var APIUrl = urlHeader+searchString+keyString;
-var titleEl = $("#youtube-title");
-var descriptionEl = $('#youtube-description');
-var thumbnailEl = $("#youtube-thumbnail");
-var youtubeLinkEl = $("#youtube-link");
+var testCounter = 2;
+var testRef = "#youtube-"+testCounter;
+var youtubeCard = $(testRef);
+var titleEl = youtubeCard.children(".youtube-title");
+// var titleEl = $("#youtube-title");
+// var descriptionEl = $('#youtube-description');
+var descriptionEl = youtubeCard.children('p');
+console.log(titleEl);
+
+// var thumbnailEl = $("#youtube-thumbnail");
+
+// var youtubeLinkEl = $("#youtube-link");
+var youtubeLinkEl = youtubeCard.children("a");
+var thumbnailEl = youtubeCard.children("a").children("img");
+
 
 
 const channelPrefix = "https://www.youtube.com/channel/";
