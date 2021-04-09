@@ -1,5 +1,10 @@
 var submit = $('#citySubmit');
 
+let map = L.map('map', {
+  layers: MQ.mapLayer(),
+  center: [30, -100],
+  zoom: 12
+});
 
 
 submit.on("click",function(){
@@ -25,11 +30,7 @@ fetch(apiString, {
   })
   .then(function (data) {
 
-    let map = L.map('map', {
-      layers: MQ.mapLayer(),
-      center: [data.origin.displayLatLng.lat, data.origin.displayLatLng.lng],
-      zoom: 12
-    });
+    map.setView(new L.LatLng(data.origin.displayLatLng.lat, data.origin.displayLatLng.lng), 12);
     
 
     console.log(data.origin.displayLatLng.lng)
