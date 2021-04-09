@@ -1,22 +1,27 @@
-var submit = $('submit');
-var userInput = $('input');
-var userInput = $('pac-input');
+var submit = $('#citySubmit');
 
-submit.on("click", plotPoints("Nashville,TN") );
+let map = L.map('map', {
+  layers: MQ.mapLayer(),
+  center: [30, -100],
+  zoom: 12
+});
 
 
+submit.on("click",function(){
+ var userInput = $('#pac-input').val();
+   plotPoints(userInput);
+
+});
 
 function plotPoints(testing){
-// var testing = "Denver,CO"
-const myKey = "x08QCFTgZ7cpVNORuGWko7Lm6SMdF2WW";
-const SICString = "&hostedData=mqap.ntpois|group_sic_code=?|581302";
-// const SICString = "query=bars";
-// const SICString = "&q=Live%20Music";
-const apiPrefix = "https://www.mapquestapi.com/search/v2/radius?center="+testing+"&radius=10&maxMatches=7&ambiguities=ignore&hostedData=mqap.ntpois|group_sic_code=?|581208&outFormat=json&key=";
-const apiSuffix = "&maxMatches=4&origin="+testing+"&radius=12";
-//This is what controls the view & results 
-// const apiSuffix = "&maxMatches=4&origin=Richmond,+VA&radius=12";
-const apiString = apiPrefix+myKey+SICString+apiSuffix;
+
+var myKey = "x08QCFTgZ7cpVNORuGWko7Lm6SMdF2WW";
+var SICString = "&hostedData=mqap.ntpois|group_sic_code=?|581302";
+
+var apiPrefix = "https://www.mapquestapi.com/search/v2/radius?center="+testing+"&radius=10&maxMatches=7&ambiguities=ignore&hostedData=mqap.ntpois|group_sic_code=?|581208&outFormat=json&key=";
+var apiSuffix = "&maxMatches=4&origin="+testing+"&radius=12";
+
+var apiString = apiPrefix+myKey+SICString+apiSuffix;
 fetch(apiString, {
   cache: "reload"
 })
@@ -25,11 +30,7 @@ fetch(apiString, {
   })
   .then(function (data) {
 
-    let map = L.map('map', {
-      layers: MQ.mapLayer(),
-      center: [data.origin.displayLatLng.lat, data.origin.displayLatLng.lng],
-      zoom: 12
-    });
+    map.setView(new L.LatLng(data.origin.displayLatLng.lat, data.origin.displayLatLng.lng), 12);
     
 
     console.log(data.origin.displayLatLng.lng)
