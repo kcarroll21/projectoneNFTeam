@@ -72,9 +72,4 @@ h2{
     font-size: 1.3rem;
     text-align: center;
 }
-/* Set the size of the div element that contains the map */
-#map {
-    min-height: 400px;
-    /* The height is 400 pixels */  
-    /* The width is the width of the web page */
-  }
+
