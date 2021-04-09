@@ -86,6 +86,6 @@ async function getYoutubeSearchObj(mySearchString){
 };
 
 // aysnc function test(){
-getYoutubeSearchObj("The Tin Pan, Richmond VA");
+getYoutubeSearchObj("Aqua Lounge, Richmond VA");
 
 
