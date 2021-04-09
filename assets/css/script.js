@@ -16,9 +16,12 @@ submit.on("click",function(){
 function plotPoints(testing){
 
 var myKey = "x08QCFTgZ7cpVNORuGWko7Lm6SMdF2WW";
-var SICString = "&hostedData=mqap.ntpois|group_sic_code=?|581302";
+// var SICString = "&hostedData=mqap.ntpois|group_sic_code=?|581302";
+var SICString = "&hostedData=mqap.ntpois|group_sic_code=?|581303";
 
-var apiPrefix = "https://www.mapquestapi.com/search/v2/radius?center="+testing+"&radius=10&maxMatches=7&ambiguities=ignore&hostedData=mqap.ntpois|group_sic_code=?|581208&outFormat=json&key=";
+// var apiPrefix = "https://www.mapquestapi.com/search/v2/radius?center="+testing+"&radius=10&maxMatches=7&ambiguities=ignore&hostedData=mqap.ntpois|group_sic_code=?|581208&outFormat=json&key=";
+var apiPrefix = "https://www.mapquestapi.com/search/v2/radius?center="+testing+"&radius=10&maxMatches=7&ambiguities=ignore&outFormat=json&key=";
+
 var apiSuffix = "&maxMatches=4&origin="+testing+"&radius=12";
 
 var apiString = apiPrefix+myKey+SICString+apiSuffix;
